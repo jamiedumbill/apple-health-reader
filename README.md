@@ -11,5 +11,5 @@ Health > Health Data > Profile > Export Health Data
 
 # Usage
 ```
-java -jar health-reader-1.0-SNAPSHOT-full.jar ./export.xml
+java -jar apple-health-reader-1.0-SNAPSHOT-full.jar ./export.xml
 ```
