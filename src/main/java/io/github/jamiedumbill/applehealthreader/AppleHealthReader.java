@@ -2,6 +2,8 @@ package io.github.jamiedumbill.applehealthreader;
 
 import io.github.jamiedumbill.applehealthreader.handler.AppleHealthRecordHandler;
 import io.github.jamiedumbill.applehealthreader.handler.BodyFatPercentAppleHealthRecordHandler;
+import io.github.jamiedumbill.applehealthreader.handler.BodyMassAppleHealthRecordHandler;
+import io.github.jamiedumbill.applehealthreader.handler.HeartRateAppleHealthRecordHandler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.xml.sax.SAXException;
@@ -12,19 +14,36 @@ import javax.xml.parsers.SAXParserFactory;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
 
 public class AppleHealthReader {
 
-
     private static final Logger LOGGER = LoggerFactory.getLogger(AppleHealthReader.class);
+    private final Map<String, AppleHealthRecordHandler> handlerMap = new HashMap<>();
 
     public static void main(String[] args){
         LOGGER.info("Starting AppleHealthReader...");
-        read(args[0]);
+        AppleHealthRecordHandler handler = pickHandler(args[1]);
+        read(args[0], handler);
         LOGGER.info("Finished AppleHealthReader...");
     }
 
-    static Collection<AppleHealthRecord> read(String xmlFilePath) {
+    static AppleHealthRecordHandler pickHandler(String option){
+        LOGGER.info("Checking which handler to use");
+        if(option.equals("bf")){
+            LOGGER.info("Using {}", BodyFatPercentAppleHealthRecordHandler.class);
+            return new BodyFatPercentAppleHealthRecordHandler();
+        }
+        if(option.equals("bm")){
+            LOGGER.info("Using {}", BodyMassAppleHealthRecordHandler.class);
+            return new BodyMassAppleHealthRecordHandler();
+        }
+        LOGGER.info("Using default {}", HeartRateAppleHealthRecordHandler.class);
+        return new HeartRateAppleHealthRecordHandler();
+    }
+
+    static Collection<AppleHealthRecord> read(String xmlFilePath, AppleHealthRecordHandler handler) {
         LOGGER.info("Reading {}", xmlFilePath);
 
         SAXParserFactory spfac = SAXParserFactory.newInstance();
@@ -37,8 +56,6 @@ public class AppleHealthReader {
         } catch (SAXException e) {
             LOGGER.error("SAX error", e);
         }
-
-        AppleHealthRecordHandler handler = new BodyFatPercentAppleHealthRecordHandler();
 
         try {
             if (sp != null) {
