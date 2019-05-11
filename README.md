@@ -1,15 +1,21 @@
 # Apple Health Reader
 Mini project to read Apple Health export xml.
 
-# Build
+## Export Apple Health data
+Health > Health Data > Profile > Export Health Data
+
+## Build
 ```
 mvn clean package
 ```
 
-# Export Apple Health data
-Health > Health Data > Profile > Export Health Data
+## Usage
 
-# Usage
 ```
-java -jar apple-health-reader-1.0-SNAPSHOT-full.jar ./export.xml
+Where
+hr is heart rate
+bm is body mass
+bf is body fat
+
+java -jar apple-health-reader-1.0-SNAPSHOT-full.jar ./export.xml [hr|bm|bf]
 ```
