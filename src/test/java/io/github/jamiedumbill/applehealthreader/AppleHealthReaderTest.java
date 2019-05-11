@@ -9,11 +9,15 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class AppleHealthReaderTest {
 
-    private String filePath =  Objects.requireNonNull(Thread.currentThread().getContextClassLoader().getResource("./apple-body-fat-percent.xml")).getPath();
+    private String bodyFatFile = getTestArtifact("./apple-body-fat-percent.xml");
+
+    static  String getTestArtifact(String filename){
+        return Objects.requireNonNull(Thread.currentThread().getContextClassLoader().getResource(filename)).getPath();
+    }
 
     @Test
-    void read() {
-        Collection<AppleHealthRecord> records = AppleHealthReader.read(filePath);
+    void readBodyFat() {
+        Collection<AppleHealthRecord> records = AppleHealthReader.read(bodyFatFile);
         assertEquals(2, records.size());
     }
 }
