@@ -4,10 +4,13 @@ import io.github.jamiedumbill.applehealthreader.handler.AppleHealthRecordHandler
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.xml.sax.SAXException;
+import org.xml.sax.SAXNotRecognizedException;
+import org.xml.sax.SAXNotSupportedException;
 
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
+import javax.xml.stream.XMLInputFactory;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -31,7 +34,7 @@ public class AppleHealthReader {
 
     static Collection<AppleHealthRecord> read(String xmlFilePath) {
         LOGGER.info("Reading {}", xmlFilePath);
-        SAXParserFactory spfac = SAXParserFactory.newInstance();
+        SAXParserFactory spfac = getSaxParserFactory();
         SAXParser sp = getSaxParser(spfac);
         AppleHealthRecordHandler handler = getAppleHealthRecordHandler(xmlFilePath, sp);
         handler.groupByCountRecordTypes().forEach((k, v) -> LOGGER.info("{}: {}", k, v));
@@ -40,6 +43,16 @@ public class AppleHealthReader {
         LOGGER.info("Found {} records", records.size());
         return records;
 
+    }
+
+    private static SAXParserFactory getSaxParserFactory() {
+        SAXParserFactory spfac = SAXParserFactory.newInstance();
+        try {
+            spfac.setFeature("http://apache.org/xml/features/disallow-doctype-decl", true);
+        } catch (ParserConfigurationException | SAXNotRecognizedException | SAXNotSupportedException e) {
+            LOGGER.error("Error setting feature on SAXParserFactory", e);
+        }
+        return spfac;
     }
 
     private static AppleHealthRecordHandler getAppleHealthRecordHandler(String xmlFilePath, SAXParser sp) {

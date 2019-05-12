@@ -9,6 +9,7 @@ import java.util.Collection;
 import java.util.Objects;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class AppleHealthReaderTest {
 
@@ -80,5 +81,12 @@ class AppleHealthReaderTest {
         String[] args = {CONSOLIDATED_FILE, actual.getPath()};
         AppleHealthReader.main(args);
         assertEquals(FileUtils.readLines(expected, "UTF-8"), FileUtils.readLines(actual, "UTF-8"));
+    }
+
+    @Test
+    void testMainLogOnly() {
+        String[] args = {CONSOLIDATED_FILE};
+        AppleHealthReader.main(args);
+        assertTrue(true);
     }
 }
