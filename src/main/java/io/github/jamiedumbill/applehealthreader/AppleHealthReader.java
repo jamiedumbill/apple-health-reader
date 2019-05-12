@@ -47,7 +47,8 @@ public class AppleHealthReader {
     private static SAXParserFactory getSaxParserFactory() {
         SAXParserFactory spfac = SAXParserFactory.newInstance();
         try {
-            spfac.setFeature("http://apache.org/xml/features/disallow-doctype-decl", false);
+            spfac.setFeature("http://apache.org/xml/features/nonvalidating/load-external-dtd", false);
+            spfac.setFeature("http://xml.org/sax/features/namespaces", false);
         } catch (ParserConfigurationException | SAXNotRecognizedException | SAXNotSupportedException e) {
             LOGGER.error("Error setting feature on SAXParserFactory", e);
         }

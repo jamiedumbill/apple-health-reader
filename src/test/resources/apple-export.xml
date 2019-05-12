@@ -1,3 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE HealthData [
+        <!-- HealthKit Export Version: 8 -->
+        <!ELEMENT HealthData ((Record)*)>
+        <!ATTLIST HealthData
+                locale CDATA #REQUIRED
+                >
+        <!ELEMENT Record ((MetadataEntry)*)>
+        <!ATTLIST Record
+                type          CDATA #REQUIRED
+                unit          CDATA #IMPLIED
+                value         CDATA #IMPLIED
+                sourceVersion CDATA #IMPLIED
+                device        CDATA #IMPLIED
+                creationDate  CDATA #IMPLIED
+                startDate     CDATA #REQUIRED
+                endDate       CDATA #REQUIRED
+                >
+
+        <!ELEMENT MetadataEntry EMPTY>
+        <!ATTLIST MetadataEntry
+                key   CDATA #REQUIRED
+                value CDATA #REQUIRED
+                >
+        ]>
 <HealthData locale="en_US">
     <Record type="HKQuantityTypeIdentifierBodyFatPercentage" unit="%" creationDate="2015-09-27 22:24:47 -0400"
             startDate="2015-08-20 07:59:00 -0400" endDate="2015-08-20 07:59:00 -0400" value="0.2446">
