@@ -1,4 +1,5 @@
-[![Build Status](https://travis-ci.org/jamiedumbill/apple-health-reader.svg?branch=master)](https://travis-ci.org/jamiedumbill/apple-health-reader)
+[![Build Status](https://travis-ci.org/jamiedumbill/apple-health-reader.svg?branch=master)](https://travis-ci.org/jamiedumbill/apple-health-reader) [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=jamiedumbill_apple-health-reader&metric=alert_status)](https://sonarcloud.io/dashboard?id=jamiedumbill_apple-health-reader) [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=jamiedumbill_apple-health-reader&metric=coverage)](https://sonarcloud.io/dashboard?id=jamiedumbill_apple-health-reader)
+----
 # Apple Health Reader
 Mini project to read Apple Health export xml.
 
