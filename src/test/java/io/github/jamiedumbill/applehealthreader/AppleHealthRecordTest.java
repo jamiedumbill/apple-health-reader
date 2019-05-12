@@ -40,9 +40,42 @@ class AppleHealthRecordTest {
     }
 
     @Test
+    void testEqualsSame() {
+        assertTrue(record.equals(record));
+    }
+
+    @Test
     void testEquals() {
         AppleHealthRecord actual = AppleHealthRecord.createFromXMLAttributes(attributes);
         assertTrue(actual.equals(record));
+    }
+
+    @Test
+    void testEqualsDifferentType() {
+        when(attributes.getValue("type")).thenReturn("HKQuantityTypeIdentifierBodyMass");
+        AppleHealthRecord actual = AppleHealthRecord.createFromXMLAttributes(attributes);
+        assertFalse(actual.equals(record));
+    }
+
+    @Test
+    void testEqualsDifferentUnit() {
+        when(attributes.getValue("unit")).thenReturn("lbs");
+        AppleHealthRecord actual = AppleHealthRecord.createFromXMLAttributes(attributes);
+        assertFalse(actual.equals(record));
+    }
+
+    @Test
+    void testEqualsDifferentStartDate() {
+        when(attributes.getValue("startDate")).thenReturn("2018-05-11 06:25:11 -0400");
+        AppleHealthRecord actual = AppleHealthRecord.createFromXMLAttributes(attributes);
+        assertFalse(actual.equals(record));
+    }
+
+    @Test
+    void testEqualsDifferentValue() {
+        when(attributes.getValue("value")).thenReturn("54.321");
+        AppleHealthRecord actual = AppleHealthRecord.createFromXMLAttributes(attributes);
+        assertFalse(actual.equals(record));
     }
 
     @Test
