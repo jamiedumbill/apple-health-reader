@@ -8,6 +8,8 @@ import org.xml.sax.helpers.DefaultHandler;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 public abstract class AppleHealthRecordHandler extends DefaultHandler {
 
@@ -47,5 +49,13 @@ public abstract class AppleHealthRecordHandler extends DefaultHandler {
 
     public Collection<AppleHealthRecord> readRecords() {
         return records;
+    }
+
+    public Collection<String> recordTypes(){
+        return readRecords().stream().map(AppleHealthRecord::getType).distinct().collect(Collectors.toList());
+    }
+
+    public Map<String, Long> groupByCountRecordTypes(){
+        return readRecords().stream().map(AppleHealthRecord::getType).collect(Collectors.groupingBy(r -> r, Collectors.counting()));
     }
 }

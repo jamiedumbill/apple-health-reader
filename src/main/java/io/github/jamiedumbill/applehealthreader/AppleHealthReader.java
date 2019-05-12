@@ -71,6 +71,9 @@ public class AppleHealthReader {
         } catch (IOException e) {
             LOGGER.error("IO error", e);
         }
+
+        handler.groupByCountRecordTypes().forEach((k,v)->LOGGER.info("{}: {}", k, v));
+        LOGGER.info("Found record types of: {}", handler.recordTypes());
         Collection<AppleHealthRecord> records = handler.readRecords();
         LOGGER.info("Found {} records", records.size());
         return records;

@@ -27,6 +27,10 @@ public class AppleHealthRecord {
         this.value = Double.valueOf(value);
     }
 
+    public String getType() {
+        return type;
+    }
+
     /**
      * .csv is a useful universal format
      * @return single line of a csv file
