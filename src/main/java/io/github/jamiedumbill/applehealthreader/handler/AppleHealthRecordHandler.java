@@ -4,7 +4,6 @@ import io.github.jamiedumbill.applehealthreader.AppleHealthRecord;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.xml.sax.Attributes;
-import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
 import java.util.ArrayList;
@@ -23,7 +22,7 @@ public abstract class AppleHealthRecordHandler extends DefaultHandler {
 
     @Override
     public void startElement(String uri, String localName, String qName, Attributes attributes) {
-        if (qName.equalsIgnoreCase("Record") && attributes.getValue("type").equals(recordType)) {
+        if (qName.equalsIgnoreCase("Record") && attributes.getValue("type").matches(recordType)) {
             AppleHealthRecord record = new AppleHealthRecord(attributes.getValue("startDate"), attributes.getValue("value"));
             records.add(record);
             counter++;

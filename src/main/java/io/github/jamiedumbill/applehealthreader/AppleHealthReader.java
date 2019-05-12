@@ -1,9 +1,6 @@
 package io.github.jamiedumbill.applehealthreader;
 
-import io.github.jamiedumbill.applehealthreader.handler.AppleHealthRecordHandler;
-import io.github.jamiedumbill.applehealthreader.handler.BodyFatPercentAppleHealthRecordHandler;
-import io.github.jamiedumbill.applehealthreader.handler.BodyMassAppleHealthRecordHandler;
-import io.github.jamiedumbill.applehealthreader.handler.HeartRateAppleHealthRecordHandler;
+import io.github.jamiedumbill.applehealthreader.handler.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.xml.sax.SAXException;
@@ -39,8 +36,12 @@ public class AppleHealthReader {
             LOGGER.info("Using {}", BodyMassAppleHealthRecordHandler.class);
             return new BodyMassAppleHealthRecordHandler();
         }
-        LOGGER.info("Using default {}", HeartRateAppleHealthRecordHandler.class);
-        return new HeartRateAppleHealthRecordHandler();
+        if(option.equals("hr")){
+            LOGGER.info("Using {}", HeartRateAppleHealthRecordHandler.class);
+            return new HeartRateAppleHealthRecordHandler();
+        }
+        LOGGER.info("Using default {}", DefaultAppleHealthRecordHandler.class);
+        return new DefaultAppleHealthRecordHandler();
     }
 
     static Collection<AppleHealthRecord> read(String xmlFilePath, AppleHealthRecordHandler handler) {

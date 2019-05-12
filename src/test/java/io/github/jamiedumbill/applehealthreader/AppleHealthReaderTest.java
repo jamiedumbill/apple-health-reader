@@ -49,9 +49,9 @@ class AppleHealthReaderTest {
     }
 
     @Test
-    void readCompositeHeartRate() {
+    void readCompositeDefault() {
         final String heartRateFile = getTestArtifact("./apple-export.xml");
-        Collection<AppleHealthRecord> records = AppleHealthReader.read(heartRateFile, AppleHealthReader.pickHandler("hr"));
-        assertEquals(5, records.size());
+        Collection<AppleHealthRecord> records = AppleHealthReader.read(heartRateFile, AppleHealthReader.pickHandler("default"));
+        assertEquals(10, records.size());
     }
 }
