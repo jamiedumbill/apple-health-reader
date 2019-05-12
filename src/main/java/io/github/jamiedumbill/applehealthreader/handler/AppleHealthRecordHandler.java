@@ -20,7 +20,7 @@ public class AppleHealthRecordHandler extends DefaultHandler {
     @Override
     public void startElement(String uri, String localName, String qName, Attributes attributes) {
         if (isNumericRecord(qName, attributes)) {
-            AppleHealthRecord record = new AppleHealthRecord(attributes.getValue("type"), attributes.getValue("unit"), attributes.getValue("startDate"), attributes.getValue("value"));
+            AppleHealthRecord record = AppleHealthRecord.createFromXMLAttributes(attributes);
             records.add(record);
             counter++;
             if (counter % 100000 == 0) {
@@ -33,10 +33,11 @@ public class AppleHealthRecordHandler extends DefaultHandler {
         if (!qName.equalsIgnoreCase("Record")) {
             return false;
         }
-        if (attributes.getValue("value") == null) {
+        String recordValue = attributes.getValue("value");
+        if (recordValue == null) {
             return false;
         }
-        return attributes.getValue("value").matches("^[+-]?(\\d*\\.)?\\d+$");
+        return recordValue.matches("^[+-]?(\\d*\\.)?\\d+$");
     }
 
     public Collection<AppleHealthRecord> readRecords() {
