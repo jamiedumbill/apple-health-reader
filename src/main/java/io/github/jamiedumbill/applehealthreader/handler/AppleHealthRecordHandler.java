@@ -11,15 +11,13 @@ import java.util.Collection;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-public abstract class AppleHealthRecordHandler extends DefaultHandler {
+public class AppleHealthRecordHandler extends DefaultHandler {
 
     private final Logger LOGGER = LoggerFactory.getLogger(getClass());
-    private final String recordType;
     private int counter = 0;
     private Collection<AppleHealthRecord> records = new ArrayList<>();
 
-    AppleHealthRecordHandler(String recordType) {
-        this.recordType = recordType;
+    public AppleHealthRecordHandler() {
     }
 
     @Override
@@ -36,9 +34,6 @@ public abstract class AppleHealthRecordHandler extends DefaultHandler {
 
     private boolean isNumericRecord(String qName, Attributes attributes) {
         if (!qName.equalsIgnoreCase("Record")) {
-            return false;
-        }
-        if (!attributes.getValue("type").matches(recordType)) {
             return false;
         }
         if (attributes.getValue("value") == null) {

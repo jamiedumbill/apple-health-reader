@@ -12,10 +12,5 @@ mvn clean package
 ## Usage
 
 ```
-Where
-hr is heart rate
-bm is body mass
-bf is body fat
-
-java -jar apple-health-reader-1.0-SNAPSHOT-full.jar ./export.xml [hr|bm|bf]
+java -jar apple-health-reader-1.0-SNAPSHOT-full.jar ./export.xml 
 ```

@@ -8,7 +8,9 @@ import org.xml.sax.SAXException;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
+import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Collection;
 import java.util.HashMap;
@@ -17,34 +19,15 @@ import java.util.Map;
 public class AppleHealthReader {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(AppleHealthReader.class);
-    private final Map<String, AppleHealthRecordHandler> handlerMap = new HashMap<>();
+    private static final String NEW_LINE = System.getProperty("line.separator");
 
-    public static void main(String[] args){
+    public static void main(String[] args) {
         LOGGER.info("Starting AppleHealthReader...");
-        AppleHealthRecordHandler handler = pickHandler(args[1]);
-        read(args[0], handler);
+        read(args[0]);
         LOGGER.info("Finished AppleHealthReader...");
     }
 
-    static AppleHealthRecordHandler pickHandler(String option){
-        LOGGER.info("Checking which handler to use");
-        if(option.equals("bf")){
-            LOGGER.info("Using {}", BodyFatPercentAppleHealthRecordHandler.class);
-            return new BodyFatPercentAppleHealthRecordHandler();
-        }
-        if(option.equals("bm")){
-            LOGGER.info("Using {}", BodyMassAppleHealthRecordHandler.class);
-            return new BodyMassAppleHealthRecordHandler();
-        }
-        if(option.equals("hr")){
-            LOGGER.info("Using {}", HeartRateAppleHealthRecordHandler.class);
-            return new HeartRateAppleHealthRecordHandler();
-        }
-        LOGGER.info("Using default {}", DefaultAppleHealthRecordHandler.class);
-        return new DefaultAppleHealthRecordHandler();
-    }
-
-    static Collection<AppleHealthRecord> read(String xmlFilePath, AppleHealthRecordHandler handler) {
+    static Collection<AppleHealthRecord> read(String xmlFilePath) {
         LOGGER.info("Reading {}", xmlFilePath);
 
         SAXParserFactory spfac = SAXParserFactory.newInstance();
@@ -57,7 +40,7 @@ public class AppleHealthReader {
         } catch (SAXException e) {
             LOGGER.error("SAX error", e);
         }
-
+        AppleHealthRecordHandler handler = new AppleHealthRecordHandler();
         try {
             if (sp != null) {
                 sp.parse(xmlFilePath, handler);
@@ -66,17 +49,30 @@ public class AppleHealthReader {
             }
         } catch (SAXException e) {
             LOGGER.error("SAX error", e);
-        } catch (FileNotFoundException e ){
+        } catch (FileNotFoundException e) {
             LOGGER.error("Could not find the file {} please check it exists", xmlFilePath);
         } catch (IOException e) {
             LOGGER.error("IO error", e);
         }
 
-        handler.groupByCountRecordTypes().forEach((k,v)->LOGGER.info("{}: {}", k, v));
+        handler.groupByCountRecordTypes().forEach((k, v) -> LOGGER.info("{}: {}", k, v));
         LOGGER.info("Found record types of: {}", handler.recordTypes());
         Collection<AppleHealthRecord> records = handler.readRecords();
         LOGGER.info("Found {} records", records.size());
         return records;
 
+    }
+
+    private void writeToFile(String filePath, Collection<AppleHealthRecord> records) {
+        try (FileOutputStream outputStream = new FileOutputStream(filePath)) {
+            for (AppleHealthRecord record : records) {
+                outputStream.write(record.toCsv().getBytes());
+                outputStream.write(NEW_LINE.getBytes());
+            }
+        } catch (FileNotFoundException e) {
+            LOGGER.error("Could not find the file {} please check it exists", filePath);
+        } catch (IOException e) {
+            LOGGER.error("Problem writing records to {}", filePath);
+        }
     }
 }
