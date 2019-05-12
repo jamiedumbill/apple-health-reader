@@ -1,18 +1,27 @@
 package io.github.jamiedumbill.applehealthreader;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.xml.sax.Attributes;
 import org.xml.sax.ext.Attributes2Impl;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertSame;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 class AppleHealthRecordTest {
 
     private AppleHealthRecord record = new AppleHealthRecord("HKQuantityTypeIdentifierBodyFatPercentage", "%", "2019-05-11 06:25:11 -0400", "123.45");
+    private final Attributes attributes = mock(Attributes.class);
+
+    @BeforeEach
+    void setUp() {
+        when(attributes.getValue("type")).thenReturn("HKQuantityTypeIdentifierBodyFatPercentage");
+        when(attributes.getValue("unit")).thenReturn("%");
+        when(attributes.getValue("startDate")).thenReturn("2019-05-11 06:25:11 -0400");
+        when(attributes.getValue("value")).thenReturn("123.45");
+    }
 
     @Test
     void testToCsv() {
@@ -26,13 +35,19 @@ class AppleHealthRecordTest {
 
     @Test
     void testCreateFromAttributes() {
-        Attributes attributes = mock(Attributes.class);
-        when(attributes.getValue("type")).thenReturn("HKQuantityTypeIdentifierBodyFatPercentage");
-        when(attributes.getValue("unit")).thenReturn("%");
-        when(attributes.getValue("startDate")).thenReturn("2019-05-11 06:25:11 -0400");
-        when(attributes.getValue("value")).thenReturn("123.45");
-
         AppleHealthRecord actual = AppleHealthRecord.createFromXMLAttributes(attributes);
         assertEquals(record, actual);
+    }
+
+    @Test
+    void testEquals() {
+        AppleHealthRecord actual = AppleHealthRecord.createFromXMLAttributes(attributes);
+        assertTrue(actual.equals(record));
+    }
+
+    @Test
+    void testHash() {
+        AppleHealthRecord actual = AppleHealthRecord.createFromXMLAttributes(attributes);
+        assertEquals(record.hashCode(), actual.hashCode());
     }
 }
