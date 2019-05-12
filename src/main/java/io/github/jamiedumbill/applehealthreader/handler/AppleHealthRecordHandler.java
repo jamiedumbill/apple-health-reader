@@ -37,7 +37,16 @@ public class AppleHealthRecordHandler extends DefaultHandler {
         if (recordValue == null) {
             return false;
         }
-        return recordValue.matches("^[+-]?(\\d*\\.)?\\d+$");
+        return isNumeric(recordValue);
+    }
+
+    private static boolean isNumeric(String str) {
+        try {
+            Double.parseDouble(str);
+            return true;
+        } catch(NumberFormatException e){
+            return false;
+        }
     }
 
     public Collection<AppleHealthRecord> readRecords() {
