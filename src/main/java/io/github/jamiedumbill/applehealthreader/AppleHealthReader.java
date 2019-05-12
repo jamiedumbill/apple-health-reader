@@ -23,7 +23,13 @@ public class AppleHealthReader {
 
     public static void main(String[] args) {
         LOGGER.info("Starting AppleHealthReader...");
-        read(args[0]);
+        Collection<AppleHealthRecord> records = read(args[0]);
+        if(args.length == 2){
+            LOGGER.info("Writing health records .csv to {}", args[1]);
+            writeToFile(args[1], records);
+        }else{
+            LOGGER.info("No output file to write data to log only");
+        }
         LOGGER.info("Finished AppleHealthReader...");
     }
 
@@ -63,7 +69,7 @@ public class AppleHealthReader {
 
     }
 
-    private void writeToFile(String filePath, Collection<AppleHealthRecord> records) {
+    private static void writeToFile(String filePath, Collection<AppleHealthRecord> records) {
         try (FileOutputStream outputStream = new FileOutputStream(filePath)) {
             for (AppleHealthRecord record : records) {
                 outputStream.write(record.toCsv().getBytes());
