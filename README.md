@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/jamiedumbill/apple-health-reader.svg?branch=master)](https://travis-ci.org/jamiedumbill/apple-health-reader)
 # Apple Health Reader
 Mini project to read Apple Health export xml.
 
