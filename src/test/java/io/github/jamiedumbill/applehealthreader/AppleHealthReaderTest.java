@@ -2,11 +2,9 @@ package io.github.jamiedumbill.applehealthreader;
 
 import org.apache.commons.io.FileUtils;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.io.TempDir;
 
 import java.io.File;
 import java.io.IOException;
-import java.nio.file.Path;
 import java.util.Collection;
 import java.util.Objects;
 
@@ -66,12 +64,21 @@ class AppleHealthReaderTest {
     }
 
     @Test
-    void testXYZ() throws IOException {
+    void testWriteToFile() throws IOException {
         final File expected = new File(getTestArtifact("apple-export.csv"));
         final File actual = File.createTempFile("test-apple-export", ".csv");
         actual.deleteOnExit();
         Collection<AppleHealthRecord> records = AppleHealthReader.read(CONSOLIDATED_FILE);
         AppleHealthReader.writeToFile(actual.getPath(), records);
-        assertEquals(FileUtils.readLines(expected,  "UTF-8"), FileUtils.readLines(actual, "UTF-8"));
+        assertEquals(FileUtils.readLines(expected, "UTF-8"), FileUtils.readLines(actual, "UTF-8"));
+    }
+
+    @Test
+    void testMain() throws IOException {
+        final File actual = File.createTempFile("test-apple-export", ".csv");
+        final File expected = new File(getTestArtifact("apple-export.csv"));
+        String[] args = {CONSOLIDATED_FILE, actual.getPath()};
+        AppleHealthReader.main(args);
+        assertEquals(FileUtils.readLines(expected, "UTF-8"), FileUtils.readLines(actual, "UTF-8"));
     }
 }
