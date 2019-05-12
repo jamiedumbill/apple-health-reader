@@ -13,12 +13,9 @@ import java.util.stream.Collectors;
 
 public class AppleHealthRecordHandler extends DefaultHandler {
 
-    private final Logger LOGGER = LoggerFactory.getLogger(getClass());
+    private static final Logger LOGGER = LoggerFactory.getLogger(AppleHealthRecordHandler.class);
     private int counter = 0;
     private Collection<AppleHealthRecord> records = new ArrayList<>();
-
-    public AppleHealthRecordHandler() {
-    }
 
     @Override
     public void startElement(String uri, String localName, String qName, Attributes attributes) {
@@ -46,11 +43,11 @@ public class AppleHealthRecordHandler extends DefaultHandler {
         return records;
     }
 
-    public Collection<String> recordTypes(){
+    public Collection<String> recordTypes() {
         return readRecords().stream().map(AppleHealthRecord::getType).distinct().collect(Collectors.toList());
     }
 
-    public Map<String, Long> groupByCountRecordTypes(){
+    public Map<String, Long> groupByCountRecordTypes() {
         return readRecords().stream().map(AppleHealthRecord::getType).collect(Collectors.groupingBy(r -> r, Collectors.counting()));
     }
 }

@@ -1,7 +1,17 @@
 <HealthData locale="en_US">
-    <Record type="HKQuantityTypeIdentifierHeartRate" sourceVersion="2.0" unit="count/min" creationDate="2015-09-25 14:58:12 -0400" startDate="2015-09-25 14:57:42 -0400" endDate="2015-09-25 14:57:42 -0400" value="81"/>
-    <Record type="HKQuantityTypeIdentifierHeartRate" sourceVersion="2.0" unit="count/min" creationDate="2015-09-25 15:29:01 -0400" startDate="2015-09-25 15:27:34 -0400" endDate="2015-09-25 15:27:34 -0400" value="77"/>
-    <Record type="HKQuantityTypeIdentifierHeartRate" sourceVersion="2.0" unit="count/min" creationDate="2015-09-25 15:38:39 -0400" startDate="2015-09-25 15:38:25 -0400" endDate="2015-09-25 15:38:25 -0400" value="69"/>
-    <Record type="HKQuantityTypeIdentifierHeartRate" sourceVersion="2.0" unit="count/min" creationDate="2015-09-25 15:54:32 -0400" startDate="2015-09-25 15:54:30 -0400" endDate="2015-09-25 15:54:30 -0400" value="88"/>
-    <Record type="HKQuantityTypeIdentifierHeartRate" sourceVersion="2.0" unit="count/min" creationDate="2015-09-25 16:04:22 -0400" startDate="2015-09-25 16:03:52 -0400" endDate="2015-09-25 16:03:52 -0400" value="83"/>
+    <Record type="HKQuantityTypeIdentifierHeartRate" sourceVersion="2.0" unit="count/min"
+            creationDate="2015-09-25 14:58:12 -0400" startDate="2015-09-25 14:57:42 -0400"
+            endDate="2015-09-25 14:57:42 -0400" value="81"/>
+    <Record type="HKQuantityTypeIdentifierHeartRate" sourceVersion="2.0" unit="count/min"
+            creationDate="2015-09-25 15:29:01 -0400" startDate="2015-09-25 15:27:34 -0400"
+            endDate="2015-09-25 15:27:34 -0400" value="77"/>
+    <Record type="HKQuantityTypeIdentifierHeartRate" sourceVersion="2.0" unit="count/min"
+            creationDate="2015-09-25 15:38:39 -0400" startDate="2015-09-25 15:38:25 -0400"
+            endDate="2015-09-25 15:38:25 -0400" value="69"/>
+    <Record type="HKQuantityTypeIdentifierHeartRate" sourceVersion="2.0" unit="count/min"
+            creationDate="2015-09-25 15:54:32 -0400" startDate="2015-09-25 15:54:30 -0400"
+            endDate="2015-09-25 15:54:30 -0400" value="88"/>
+    <Record type="HKQuantityTypeIdentifierHeartRate" sourceVersion="2.0" unit="count/min"
+            creationDate="2015-09-25 16:04:22 -0400" startDate="2015-09-25 16:03:52 -0400"
+            endDate="2015-09-25 16:03:52 -0400" value="83"/>
 </HealthData>

@@ -1,6 +1,6 @@
 package io.github.jamiedumbill.applehealthreader;
 
-import io.github.jamiedumbill.applehealthreader.handler.*;
+import io.github.jamiedumbill.applehealthreader.handler.AppleHealthRecordHandler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.xml.sax.SAXException;
@@ -8,13 +8,10 @@ import org.xml.sax.SAXException;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
 
 public class AppleHealthReader {
 
@@ -24,10 +21,10 @@ public class AppleHealthReader {
     public static void main(String[] args) {
         LOGGER.info("Starting AppleHealthReader...");
         Collection<AppleHealthRecord> records = read(args[0]);
-        if(args.length == 2){
+        if (args.length == 2) {
             LOGGER.info("Writing health records .csv to {}", args[1]);
             writeToFile(args[1], records);
-        }else{
+        } else {
             LOGGER.info("No output file to write data to log only");
         }
         LOGGER.info("Finished AppleHealthReader...");
@@ -35,17 +32,18 @@ public class AppleHealthReader {
 
     static Collection<AppleHealthRecord> read(String xmlFilePath) {
         LOGGER.info("Reading {}", xmlFilePath);
-
         SAXParserFactory spfac = SAXParserFactory.newInstance();
+        SAXParser sp = getSaxParser(spfac);
+        AppleHealthRecordHandler handler = getAppleHealthRecordHandler(xmlFilePath, sp);
+        handler.groupByCountRecordTypes().forEach((k, v) -> LOGGER.info("{}: {}", k, v));
+        LOGGER.info("Found record types of: {}", handler.recordTypes());
+        Collection<AppleHealthRecord> records = handler.readRecords();
+        LOGGER.info("Found {} records", records.size());
+        return records;
 
-        SAXParser sp = null;
-        try {
-            sp = spfac.newSAXParser();
-        } catch (ParserConfigurationException e) {
-            LOGGER.error("Parser configuration error", e);
-        } catch (SAXException e) {
-            LOGGER.error("SAX error", e);
-        }
+    }
+
+    private static AppleHealthRecordHandler getAppleHealthRecordHandler(String xmlFilePath, SAXParser sp) {
         AppleHealthRecordHandler handler = new AppleHealthRecordHandler();
         try {
             if (sp != null) {
@@ -60,13 +58,19 @@ public class AppleHealthReader {
         } catch (IOException e) {
             LOGGER.error("IO error", e);
         }
+        return handler;
+    }
 
-        handler.groupByCountRecordTypes().forEach((k, v) -> LOGGER.info("{}: {}", k, v));
-        LOGGER.info("Found record types of: {}", handler.recordTypes());
-        Collection<AppleHealthRecord> records = handler.readRecords();
-        LOGGER.info("Found {} records", records.size());
-        return records;
-
+    private static SAXParser getSaxParser(SAXParserFactory spfac) {
+        SAXParser sp = null;
+        try {
+            sp = spfac.newSAXParser();
+        } catch (ParserConfigurationException e) {
+            LOGGER.error("Parser configuration error", e);
+        } catch (SAXException e) {
+            LOGGER.error("SAX error", e);
+        }
+        return sp;
     }
 
     private static void writeToFile(String filePath, Collection<AppleHealthRecord> records) {

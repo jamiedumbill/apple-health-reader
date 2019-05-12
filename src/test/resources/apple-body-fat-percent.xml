@@ -1,8 +1,10 @@
 <HealthData locale="en_US">
-    <Record type="HKQuantityTypeIdentifierBodyFatPercentage" unit="%" creationDate="2015-09-27 22:24:47 -0400" startDate="2015-08-20 07:59:00 -0400" endDate="2015-08-20 07:59:00 -0400" value="0.2446">
+    <Record type="HKQuantityTypeIdentifierBodyFatPercentage" unit="%" creationDate="2015-09-27 22:24:47 -0400"
+            startDate="2015-08-20 07:59:00 -0400" endDate="2015-08-20 07:59:00 -0400" value="0.2446">
         <MetadataEntry key="HKWasUserEntered" value="0"/>
     </Record>
-    <Record type="HKQuantityTypeIdentifierBodyFatPercentage" unit="%" creationDate="2015-09-27 22:24:47 -0400" startDate="2015-09-25 06:50:59 -0400" endDate="2015-09-25 06:50:59 -0400" value="0.244207">
+    <Record type="HKQuantityTypeIdentifierBodyFatPercentage" unit="%" creationDate="2015-09-27 22:24:47 -0400"
+            startDate="2015-09-25 06:50:59 -0400" endDate="2015-09-25 06:50:59 -0400" value="0.244207">
         <MetadataEntry key="HKWasUserEntered" value="0"/>
     </Record>
 </HealthData>

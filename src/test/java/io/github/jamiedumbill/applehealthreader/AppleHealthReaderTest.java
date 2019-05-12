@@ -39,7 +39,7 @@ class AppleHealthReaderTest {
         final String bodyFatFile = getTestArtifact("./apple-export.xml");
         Long count = AppleHealthReader.read(bodyFatFile)
                 .stream()
-                .filter(r-> r.getType().equals("HKQuantityTypeIdentifierBodyFatPercentage"))
+                .filter(r -> r.getType().equals("HKQuantityTypeIdentifierBodyFatPercentage"))
                 .count();
         assertEquals(2, count);
     }
@@ -49,7 +49,7 @@ class AppleHealthReaderTest {
         final String bodyMassFile = getTestArtifact("./apple-export.xml");
         Long count = AppleHealthReader.read(bodyMassFile)
                 .stream()
-                .filter(r-> r.getType().equals("HKQuantityTypeIdentifierBodyMass"))
+                .filter(r -> r.getType().equals("HKQuantityTypeIdentifierBodyMass"))
                 .count();
         assertEquals(3, count);
     }

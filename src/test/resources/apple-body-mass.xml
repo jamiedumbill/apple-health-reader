@@ -1,11 +1,14 @@
 <HealthData locale="en_US">
-    <Record type="HKQuantityTypeIdentifierBodyMass" unit="lb" creationDate="2015-09-27 22:24:48 -0400" startDate="2015-06-12 08:00:29 -0400" endDate="2015-06-12 08:00:29 -0400" value="185.572">
+    <Record type="HKQuantityTypeIdentifierBodyMass" unit="lb" creationDate="2015-09-27 22:24:48 -0400"
+            startDate="2015-06-12 08:00:29 -0400" endDate="2015-06-12 08:00:29 -0400" value="185.572">
         <MetadataEntry key="HKWasUserEntered" value="0"/>
     </Record>
-    <Record type="HKQuantityTypeIdentifierBodyMass" unit="lb" creationDate="2015-09-27 22:24:48 -0400" startDate="2015-05-23 17:00:07 -0400" endDate="2015-05-23 17:00:07 -0400" value="190.228">
+    <Record type="HKQuantityTypeIdentifierBodyMass" unit="lb" creationDate="2015-09-27 22:24:48 -0400"
+            startDate="2015-05-23 17:00:07 -0400" endDate="2015-05-23 17:00:07 -0400" value="190.228">
         <MetadataEntry key="HKWasUserEntered" value="0"/>
     </Record>
-    <Record type="HKQuantityTypeIdentifierBodyMass" unit="lb" creationDate="2015-09-27 22:24:48 -0400" startDate="2015-06-14 09:53:58 -0400" endDate="2015-06-14 09:53:58 -0400" value="187.613">
+    <Record type="HKQuantityTypeIdentifierBodyMass" unit="lb" creationDate="2015-09-27 22:24:48 -0400"
+            startDate="2015-06-14 09:53:58 -0400" endDate="2015-06-14 09:53:58 -0400" value="187.613">
         <MetadataEntry key="HKWasUserEntered" value="0"/>
     </Record>
 </HealthData>

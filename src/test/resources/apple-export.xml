@@ -1,24 +1,41 @@
 <HealthData locale="en_US">
-    <Record type="HKQuantityTypeIdentifierBodyFatPercentage" unit="%" creationDate="2015-09-27 22:24:47 -0400" startDate="2015-08-20 07:59:00 -0400" endDate="2015-08-20 07:59:00 -0400" value="0.2446">
+    <Record type="HKQuantityTypeIdentifierBodyFatPercentage" unit="%" creationDate="2015-09-27 22:24:47 -0400"
+            startDate="2015-08-20 07:59:00 -0400" endDate="2015-08-20 07:59:00 -0400" value="0.2446">
         <MetadataEntry key="HKWasUserEntered" value="0"/>
     </Record>
-    <Record type="HKQuantityTypeIdentifierBodyFatPercentage" unit="%" creationDate="2015-09-27 22:24:47 -0400" startDate="2015-09-25 06:50:59 -0400" endDate="2015-09-25 06:50:59 -0400" value="0.244207">
+    <Record type="HKQuantityTypeIdentifierBodyFatPercentage" unit="%" creationDate="2015-09-27 22:24:47 -0400"
+            startDate="2015-09-25 06:50:59 -0400" endDate="2015-09-25 06:50:59 -0400" value="0.244207">
         <MetadataEntry key="HKWasUserEntered" value="0"/>
     </Record>
-    <Record type="HKQuantityTypeIdentifierBodyMass" unit="lb" creationDate="2015-09-27 22:24:48 -0400" startDate="2015-06-12 08:00:29 -0400" endDate="2015-06-12 08:00:29 -0400" value="185.572">
+    <Record type="HKQuantityTypeIdentifierBodyMass" unit="lb" creationDate="2015-09-27 22:24:48 -0400"
+            startDate="2015-06-12 08:00:29 -0400" endDate="2015-06-12 08:00:29 -0400" value="185.572">
         <MetadataEntry key="HKWasUserEntered" value="0"/>
     </Record>
-    <Record type="HKQuantityTypeIdentifierBodyMass" unit="lb" creationDate="2015-09-27 22:24:48 -0400" startDate="2015-05-23 17:00:07 -0400" endDate="2015-05-23 17:00:07 -0400" value="190.228">
+    <Record type="HKQuantityTypeIdentifierBodyMass" unit="lb" creationDate="2015-09-27 22:24:48 -0400"
+            startDate="2015-05-23 17:00:07 -0400" endDate="2015-05-23 17:00:07 -0400" value="190.228">
         <MetadataEntry key="HKWasUserEntered" value="0"/>
     </Record>
-    <Record type="HKQuantityTypeIdentifierBodyMass" unit="lb" creationDate="2015-09-27 22:24:48 -0400" startDate="2015-06-14 09:53:58 -0400" endDate="2015-06-14 09:53:58 -0400" value="187.613">
+    <Record type="HKQuantityTypeIdentifierBodyMass" unit="lb" creationDate="2015-09-27 22:24:48 -0400"
+            startDate="2015-06-14 09:53:58 -0400" endDate="2015-06-14 09:53:58 -0400" value="187.613">
         <MetadataEntry key="HKWasUserEntered" value="0"/>
     </Record>
-    <Record type="HKQuantityTypeIdentifierHeartRate" sourceVersion="2.0" unit="count/min" creationDate="2015-09-25 14:58:12 -0400" startDate="2015-09-25 14:57:42 -0400" endDate="2015-09-25 14:57:42 -0400" value="81"/>
-    <Record type="HKQuantityTypeIdentifierHeartRate" sourceVersion="2.0" unit="count/min" creationDate="2015-09-25 15:29:01 -0400" startDate="2015-09-25 15:27:34 -0400" endDate="2015-09-25 15:27:34 -0400" value="77"/>
-    <Record type="HKQuantityTypeIdentifierHeartRate" sourceVersion="2.0" unit="count/min" creationDate="2015-09-25 15:38:39 -0400" startDate="2015-09-25 15:38:25 -0400" endDate="2015-09-25 15:38:25 -0400" value="69"/>
-    <Record type="HKQuantityTypeIdentifierHeartRate" sourceVersion="2.0" unit="count/min" creationDate="2015-09-25 15:54:32 -0400" startDate="2015-09-25 15:54:30 -0400" endDate="2015-09-25 15:54:30 -0400" value="88"/>
-    <Record type="HKQuantityTypeIdentifierHeartRate" sourceVersion="2.0" unit="count/min" creationDate="2015-09-25 16:04:22 -0400" startDate="2015-09-25 16:03:52 -0400" endDate="2015-09-25 16:03:52 -0400" value="83"/>
-    <Record type="TextValueRecord" sourceVersion="2.0" unit="count/min" creationDate="2015-09-25 16:04:22 -0400" startDate="2015-09-25 16:03:52 -0400" endDate="2015-09-25 16:03:52 -0400" value="TextValueRecord"/>
-    <Record type="NoValueRecord" sourceVersion="2.0" unit="count/min" creationDate="2015-09-25 16:04:22 -0400" startDate="2015-09-25 16:03:52 -0400" endDate="2015-09-25 16:03:52 -0400"/>
+    <Record type="HKQuantityTypeIdentifierHeartRate" sourceVersion="2.0" unit="count/min"
+            creationDate="2015-09-25 14:58:12 -0400" startDate="2015-09-25 14:57:42 -0400"
+            endDate="2015-09-25 14:57:42 -0400" value="81"/>
+    <Record type="HKQuantityTypeIdentifierHeartRate" sourceVersion="2.0" unit="count/min"
+            creationDate="2015-09-25 15:29:01 -0400" startDate="2015-09-25 15:27:34 -0400"
+            endDate="2015-09-25 15:27:34 -0400" value="77"/>
+    <Record type="HKQuantityTypeIdentifierHeartRate" sourceVersion="2.0" unit="count/min"
+            creationDate="2015-09-25 15:38:39 -0400" startDate="2015-09-25 15:38:25 -0400"
+            endDate="2015-09-25 15:38:25 -0400" value="69"/>
+    <Record type="HKQuantityTypeIdentifierHeartRate" sourceVersion="2.0" unit="count/min"
+            creationDate="2015-09-25 15:54:32 -0400" startDate="2015-09-25 15:54:30 -0400"
+            endDate="2015-09-25 15:54:30 -0400" value="88"/>
+    <Record type="HKQuantityTypeIdentifierHeartRate" sourceVersion="2.0" unit="count/min"
+            creationDate="2015-09-25 16:04:22 -0400" startDate="2015-09-25 16:03:52 -0400"
+            endDate="2015-09-25 16:03:52 -0400" value="83"/>
+    <Record type="TextValueRecord" sourceVersion="2.0" unit="count/min" creationDate="2015-09-25 16:04:22 -0400"
+            startDate="2015-09-25 16:03:52 -0400" endDate="2015-09-25 16:03:52 -0400" value="TextValueRecord"/>
+    <Record type="NoValueRecord" sourceVersion="2.0" unit="count/min" creationDate="2015-09-25 16:04:22 -0400"
+            startDate="2015-09-25 16:03:52 -0400" endDate="2015-09-25 16:03:52 -0400"/>
 </HealthData>

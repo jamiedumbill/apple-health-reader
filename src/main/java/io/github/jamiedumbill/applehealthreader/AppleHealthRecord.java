@@ -15,10 +15,11 @@ public class AppleHealthRecord {
 
     /**
      * Simple timeseries record from apple health data
-     * @param type data type of the record
-     * @param unit of measurement
+     *
+     * @param type      data type of the record
+     * @param unit      of measurement
      * @param startDate the time the records was created
-     * @param value sample value of the measurement/records
+     * @param value     sample value of the measurement/records
      */
     public AppleHealthRecord(String type, String unit, String startDate, String value) {
         this.type = type;
@@ -33,10 +34,11 @@ public class AppleHealthRecord {
 
     /**
      * .csv is a useful universal format
+     *
      * @return single line of a csv file
      */
-    String toCsv(){
-        return type +","+unit+","+timeCreated + "," +value;
+    String toCsv() {
+        return type + "," + unit + "," + timeCreated + "," + value;
     }
 
     @Override
