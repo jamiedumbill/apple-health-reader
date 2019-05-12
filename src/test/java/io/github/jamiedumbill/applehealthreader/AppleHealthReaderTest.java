@@ -1,13 +1,20 @@
 package io.github.jamiedumbill.applehealthreader;
 
+import org.apache.commons.io.FileUtils;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.io.TempDir;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Path;
 import java.util.Collection;
 import java.util.Objects;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class AppleHealthReaderTest {
+
+    private static final String CONSOLIDATED_FILE = getTestArtifact("./apple-export.xml");
 
     static String getTestArtifact(String filename) {
         return Objects.requireNonNull(Thread.currentThread().getContextClassLoader().getResource(filename)).getPath();
@@ -36,8 +43,7 @@ class AppleHealthReaderTest {
 
     @Test
     void readCompositeBodyFat() {
-        final String bodyFatFile = getTestArtifact("./apple-export.xml");
-        Long count = AppleHealthReader.read(bodyFatFile)
+        Long count = AppleHealthReader.read(CONSOLIDATED_FILE)
                 .stream()
                 .filter(r -> r.getType().equals("HKQuantityTypeIdentifierBodyFatPercentage"))
                 .count();
@@ -46,8 +52,7 @@ class AppleHealthReaderTest {
 
     @Test
     void readCompositeBodyMass() {
-        final String bodyMassFile = getTestArtifact("./apple-export.xml");
-        Long count = AppleHealthReader.read(bodyMassFile)
+        Long count = AppleHealthReader.read(CONSOLIDATED_FILE)
                 .stream()
                 .filter(r -> r.getType().equals("HKQuantityTypeIdentifierBodyMass"))
                 .count();
@@ -56,8 +61,17 @@ class AppleHealthReaderTest {
 
     @Test
     void readCompositeDefault() {
-        final String heartRateFile = getTestArtifact("./apple-export.xml");
-        Collection<AppleHealthRecord> records = AppleHealthReader.read(heartRateFile);
+        Collection<AppleHealthRecord> records = AppleHealthReader.read(CONSOLIDATED_FILE);
         assertEquals(10, records.size());
+    }
+
+    @Test
+    void testXYZ() throws IOException {
+        final File expected = new File(getTestArtifact("apple-export.csv"));
+        final File actual = File.createTempFile("test-apple-export", ".csv");
+        actual.deleteOnExit();
+        Collection<AppleHealthRecord> records = AppleHealthReader.read(CONSOLIDATED_FILE);
+        AppleHealthReader.writeToFile(actual.getPath(), records);
+        assertEquals(FileUtils.readLines(expected,  "UTF-8"), FileUtils.readLines(actual, "UTF-8"));
     }
 }

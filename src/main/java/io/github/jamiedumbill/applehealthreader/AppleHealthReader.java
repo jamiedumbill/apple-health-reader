@@ -22,7 +22,6 @@ public class AppleHealthReader {
         LOGGER.info("Starting AppleHealthReader...");
         Collection<AppleHealthRecord> records = read(args[0]);
         if (args.length == 2) {
-            LOGGER.info("Writing health records .csv to {}", args[1]);
             writeToFile(args[1], records);
         } else {
             LOGGER.info("No output file to write data to log only");
@@ -73,7 +72,8 @@ public class AppleHealthReader {
         return sp;
     }
 
-    private static void writeToFile(String filePath, Collection<AppleHealthRecord> records) {
+    static void writeToFile(String filePath, Collection<AppleHealthRecord> records) {
+        LOGGER.info("Writing to {}", filePath);
         try (FileOutputStream outputStream = new FileOutputStream(filePath)) {
             for (AppleHealthRecord record : records) {
                 outputStream.write(record.toCsv().getBytes());
