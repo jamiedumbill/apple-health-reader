@@ -7,6 +7,7 @@ import org.xml.sax.SAXException;
 import org.xml.sax.SAXNotRecognizedException;
 import org.xml.sax.SAXNotSupportedException;
 
+import javax.xml.XMLConstants;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
@@ -47,8 +48,7 @@ public class AppleHealthReader {
     private static SAXParserFactory getSaxParserFactory() {
         SAXParserFactory spfac = SAXParserFactory.newInstance();
         try {
-            spfac.setFeature("http://apache.org/xml/features/nonvalidating/load-external-dtd", false);
-            spfac.setFeature("http://xml.org/sax/features/namespaces", false);
+            spfac.setFeature(XMLConstants.FEATURE_SECURE_PROCESSING, true);
         } catch (ParserConfigurationException | SAXNotRecognizedException | SAXNotSupportedException e) {
             LOGGER.error("Error setting feature on SAXParserFactory", e);
         }
