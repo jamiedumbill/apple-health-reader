@@ -1,6 +1,5 @@
 package io.github.jamiedumbill.applehealthreader;
 
-import io.github.jamiedumbill.applehealthreader.handler.AppleHealthRecordHandler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.xml.sax.SAXException;
