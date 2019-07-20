@@ -16,11 +16,19 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Collection;
 
+/**
+ * Parses an Apple Health .xml file to a .csv or returns a Collection of POJO's
+ */
 public class AppleHealthReader {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(AppleHealthReader.class);
     private static final String NEW_LINE = System.getProperty("line.separator");
 
+    /**
+     * Will either log stats detailing number of records found by type or will write records to a csv file.
+     *
+     * @param args expects either just an input file (.xml) or 2x args an input file (.xml) and an output file (.csv)
+     */
     public static void main(String[] args) {
         LOGGER.info("Starting AppleHealthReader...");
         Collection<AppleHealthRecord> records = read(args[0]);
@@ -32,6 +40,12 @@ public class AppleHealthReader {
         LOGGER.info("Finished AppleHealthReader...");
     }
 
+    /**
+     * Takes an Apple Health xml file and returns a collection of POJO {@link AppleHealthRecord}
+     *
+     * @param xmlFilePath an xml file containing Apple Health records
+     * @return a collection of AppleHealthRecord
+     */
     static Collection<AppleHealthRecord> read(String xmlFilePath) {
         LOGGER.info("Reading {}", xmlFilePath);
         SAXParserFactory spfac = getSaxParserFactory();
@@ -85,6 +99,11 @@ public class AppleHealthReader {
         return sp;
     }
 
+    /**
+     * Takes records and writes them to a .csv file
+     * @param filePath path to write records to
+     * @param records data to write to the file
+     */
     static void writeToFile(String filePath, Collection<AppleHealthRecord> records) {
         LOGGER.info("Writing to {}", filePath);
         try (FileOutputStream outputStream = new FileOutputStream(filePath)) {
