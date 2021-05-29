@@ -54,7 +54,7 @@ class AppleHealthRecordTest {
     void testEqualsDifferentType() {
         when(attributes.getValue("type")).thenReturn("HKQuantityTypeIdentifierBodyMass");
         AppleHealthRecord actual = AppleHealthRecord.createFromXMLAttributes(attributes);
-        assertEquals(actual, record);
+        assertNotEquals(actual, record);
     }
 
     @Test
