@@ -12,7 +12,7 @@ import static org.mockito.Mockito.when;
 
 class AppleHealthRecordTest {
 
-    private AppleHealthRecord record = new AppleHealthRecord("HKQuantityTypeIdentifierBodyFatPercentage", "%", "2019-05-11 06:25:11 -0400", "123.45");
+    private final AppleHealthRecord record = new AppleHealthRecord("HKQuantityTypeIdentifierBodyFatPercentage", "%", "2019-05-11 06:25:11 -0400", "123.45");
     private final Attributes attributes = mock(Attributes.class);
 
     @BeforeEach
@@ -41,41 +41,41 @@ class AppleHealthRecordTest {
 
     @Test
     void testEqualsSame() {
-        assertTrue(record.equals(record));
+        assertEquals(record, record);
     }
 
     @Test
     void testEquals() {
         AppleHealthRecord actual = AppleHealthRecord.createFromXMLAttributes(attributes);
-        assertTrue(actual.equals(record));
+        assertEquals(actual, record);
     }
 
     @Test
     void testEqualsDifferentType() {
         when(attributes.getValue("type")).thenReturn("HKQuantityTypeIdentifierBodyMass");
         AppleHealthRecord actual = AppleHealthRecord.createFromXMLAttributes(attributes);
-        assertFalse(actual.equals(record));
+        assertEquals(actual, record);
     }
 
     @Test
     void testEqualsDifferentUnit() {
         when(attributes.getValue("unit")).thenReturn("lbs");
         AppleHealthRecord actual = AppleHealthRecord.createFromXMLAttributes(attributes);
-        assertFalse(actual.equals(record));
+        assertNotEquals(actual, record);
     }
 
     @Test
     void testEqualsDifferentStartDate() {
         when(attributes.getValue("startDate")).thenReturn("2018-05-11 06:25:11 -0400");
         AppleHealthRecord actual = AppleHealthRecord.createFromXMLAttributes(attributes);
-        assertFalse(actual.equals(record));
+        assertNotEquals(actual, record);
     }
 
     @Test
     void testEqualsDifferentValue() {
         when(attributes.getValue("value")).thenReturn("54.321");
         AppleHealthRecord actual = AppleHealthRecord.createFromXMLAttributes(attributes);
-        assertFalse(actual.equals(record));
+        assertNotEquals(actual, record);
     }
 
     @Test

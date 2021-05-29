@@ -106,8 +106,8 @@ public class AppleHealthReader {
     static void writeToFile(String filePath, Collection<AppleHealthRecord> records) {
         LOGGER.info("Writing to {}", filePath);
         try (FileOutputStream outputStream = new FileOutputStream(filePath)) {
-            for (AppleHealthRecord record : records) {
-                outputStream.write(record.toCsv().getBytes());
+            for (AppleHealthRecord appleHealthRecord : records) {
+                outputStream.write(appleHealthRecord.toCsv().getBytes());
                 outputStream.write(NEW_LINE.getBytes());
             }
         } catch (FileNotFoundException e) {

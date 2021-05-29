@@ -65,11 +65,11 @@ public class AppleHealthRecord {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof AppleHealthRecord)) return false;
-        AppleHealthRecord record = (AppleHealthRecord) o;
-        return Objects.equals(type, record.type) &&
-                Objects.equals(unit, record.unit) &&
-                Objects.equals(timeCreated, record.timeCreated) &&
-                Objects.equals(value, record.value);
+        AppleHealthRecord appleHealthRecord = (AppleHealthRecord) o;
+        return Objects.equals(type, appleHealthRecord.type) &&
+                Objects.equals(unit, appleHealthRecord.unit) &&
+                Objects.equals(timeCreated, appleHealthRecord.timeCreated) &&
+                Objects.equals(value, appleHealthRecord.value);
     }
 
     @Override

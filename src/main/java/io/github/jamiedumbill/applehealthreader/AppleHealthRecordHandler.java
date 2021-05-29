@@ -19,8 +19,8 @@ public class AppleHealthRecordHandler extends DefaultHandler {
     @Override
     public void startElement(String uri, String localName, String qName, Attributes attributes) {
         if (isNumericRecord(qName, attributes)) {
-            AppleHealthRecord record = AppleHealthRecord.createFromXMLAttributes(attributes);
-            records.add(record);
+            AppleHealthRecord appleHealthRecord = AppleHealthRecord.createFromXMLAttributes(attributes);
+            records.add(appleHealthRecord);
             counter++;
             if (counter % 100000 == 0) {
                 LOGGER.info("Found {} records", counter);
