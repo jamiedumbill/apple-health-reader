@@ -1,6 +1,0 @@
-language: java
-addons:
-  sonarcloud:
-    organization: "jamiedumbill-github"
-script:
-  - mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar -Dsonar.projectKey=jamiedumbill_apple-health-reader -Dsonar.organization=jamiedumbill-github -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=02441d51ae87de603aa083f963b7cd750f670fbf
