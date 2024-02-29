@@ -53,7 +53,7 @@ public class AppleHealthRecordHandler extends DefaultHandler {
     }
 
     Collection<String> recordTypes() {
-        return readRecords().stream().map(AppleHealthRecord::getType).distinct().collect(Collectors.toList());
+        return readRecords().stream().map(AppleHealthRecord::getType).distinct().toList();
     }
 
     Map<String, Long> groupByCountRecordTypes() {
