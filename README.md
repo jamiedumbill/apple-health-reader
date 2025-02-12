@@ -1,4 +1,4 @@
-[![Build Status](https://circleci.com/gh/jamiedumbill/apple-health-reader.svg?style=svg)](https://app.circleci.com/pipelines/github/jamiedumbill/apple-health-reader) [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=jamiedumbill_apple-health-reader&metric=alert_status)](https://sonarcloud.io/dashboard?id=jamiedumbill_apple-health-reader) [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=jamiedumbill_apple-health-reader&metric=coverage)](https://sonarcloud.io/dashboard?id=jamiedumbill_apple-health-reader)
+[![Java CI with Maven](https://github.com/jamiedumbill/apple-health-reader/actions/workflows/maven.yml/badge.svg)](https://github.com/jamiedumbill/apple-health-reader/actions/workflows/maven.yml) [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=jamiedumbill_apple-health-reader&metric=alert_status)](https://sonarcloud.io/dashboard?id=jamiedumbill_apple-health-reader)
 ----
 # Apple Health Reader
 Mini project to read Apple Health export xml.
