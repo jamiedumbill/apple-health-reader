@@ -2,7 +2,6 @@ package io.github.jamiedumbill.applehealthreader;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mockito;
 import org.xml.sax.Attributes;
 
 import static org.junit.jupiter.api.Assertions.*;
