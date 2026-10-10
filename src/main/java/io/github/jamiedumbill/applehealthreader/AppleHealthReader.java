@@ -90,6 +90,8 @@ public class AppleHealthReader {
         SAXParser sp = null;
         try {
             sp = spfac.newSAXParser();
+            sp.setProperty(XMLConstants.ACCESS_EXTERNAL_DTD, "");
+            sp.setProperty(XMLConstants.ACCESS_EXTERNAL_SCHEMA, "");
         } catch (ParserConfigurationException e) {
             LOGGER.error("Parser configuration error", e);
         } catch (SAXException e) {
